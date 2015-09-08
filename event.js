@@ -7,6 +7,9 @@ var rword = /[^, ]+/g,
 	},
 	_isArray = function ( arr ) {
 		return oToString.call(arr) == '[object Array]';
+	},
+	_isObject = function ( obj ) {
+		return oToString.call( obj ) === '[object Object]';
 	};
 /*======================
 		event	data
@@ -230,7 +233,7 @@ function _one ( obj, ev, fn, capture ) {
 function _trigger ( obj, ev, data ) {
 	if ( !obj || !ev ) return;
 	var sEv, i = 0, j, evt;
-	if ( typeof ev !== 'string' && _isPlainObject( ev ) ) {
+	if ( typeof ev !== 'string' && _isObject( ev ) ) {
 		for ( j in ev ){
 			sEv += ' '+ev[ j ];
 		}
